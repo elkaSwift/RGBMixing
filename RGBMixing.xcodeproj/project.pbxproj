@@ -9,21 +9,23 @@
 /* Begin PBXBuildFile section */
 		1C1159BC2776199F00135014 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C1159BB2776199F00135014 /* AppDelegate.swift */; };
 		1C1159BE2776199F00135014 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C1159BD2776199F00135014 /* SceneDelegate.swift */; };
-		1C1159C02776199F00135014 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C1159BF2776199F00135014 /* ViewController.swift */; };
+		1C1159C02776199F00135014 /* ColorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C1159BF2776199F00135014 /* ColorViewController.swift */; };
 		1C1159C32776199F00135014 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1C1159C12776199F00135014 /* Main.storyboard */; };
 		1C1159C5277619A000135014 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1C1159C4277619A000135014 /* Assets.xcassets */; };
 		1C1159C8277619A000135014 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1C1159C6277619A000135014 /* LaunchScreen.storyboard */; };
+		1C1159D027761DB600135014 /* RGBMixingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C1159CF27761DB600135014 /* RGBMixingViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		1C1159B82776199F00135014 /* RGBMixing.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RGBMixing.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1C1159BB2776199F00135014 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1C1159BD2776199F00135014 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		1C1159BF2776199F00135014 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		1C1159BF2776199F00135014 /* ColorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorViewController.swift; sourceTree = "<group>"; };
 		1C1159C22776199F00135014 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		1C1159C4277619A000135014 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1C1159C7277619A000135014 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1C1159C9277619A000135014 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1C1159CF27761DB600135014 /* RGBMixingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RGBMixingViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,7 +60,8 @@
 			children = (
 				1C1159BB2776199F00135014 /* AppDelegate.swift */,
 				1C1159BD2776199F00135014 /* SceneDelegate.swift */,
-				1C1159BF2776199F00135014 /* ViewController.swift */,
+				1C1159BF2776199F00135014 /* ColorViewController.swift */,
+				1C1159CF27761DB600135014 /* RGBMixingViewController.swift */,
 				1C1159C12776199F00135014 /* Main.storyboard */,
 				1C1159C4277619A000135014 /* Assets.xcassets */,
 				1C1159C6277619A000135014 /* LaunchScreen.storyboard */,
@@ -138,8 +141,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1C1159C02776199F00135014 /* ViewController.swift in Sources */,
+				1C1159C02776199F00135014 /* ColorViewController.swift in Sources */,
 				1C1159BC2776199F00135014 /* AppDelegate.swift in Sources */,
+				1C1159D027761DB600135014 /* RGBMixingViewController.swift in Sources */,
 				1C1159BE2776199F00135014 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
