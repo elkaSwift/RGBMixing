@@ -15,9 +15,9 @@ class ColorViewController: UIViewController, ColorViewControllerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-       
+        
     }
-
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let destination = segue.destination as? RGBMixingViewController else { return }
         destination.delegate = self
@@ -28,9 +28,9 @@ class ColorViewController: UIViewController, ColorViewControllerDelegate {
     }
     
     @IBAction func unwind(for seque: UIStoryboardSegue) {
-      
+        
     }
-
+    
 }
 
 

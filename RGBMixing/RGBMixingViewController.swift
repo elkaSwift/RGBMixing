@@ -9,11 +9,11 @@ import UIKit
 
 
 class RGBMixingViewController: UIViewController {
-
-    //MARK: - IBOutlets
     
+    //MARK: - private properties
     weak var delegate: ColorViewController?
     
+    //MARK: - IBOutlets
     @IBOutlet weak var colorView: UIView!
     
     @IBOutlet weak var redLabel: UILabel!
@@ -31,29 +31,35 @@ class RGBMixingViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         colorView.layer.cornerRadius = 15
-        
         redSlider.minimumTrackTintColor = .red
         greenSlider.minimumTrackTintColor = .green
         blueSlider.minimumTrackTintColor = .blue
         
         setColor()
-        setValue(for: redLabel, greenLabel, blueLabel)
+        setValueLabel(for: redLabel, greenLabel, blueLabel)
+        setValueTF(for: redTextField, greenTextField, blueTextField)
         
         redTextField.delegate = self
         greenTextField.delegate = self
         blueTextField.delegate = self
     }
     
-     
-
-//MARK: - IBAction
+    
+    
+    //MARK: - IBAction
     @IBAction func rgbSlider(_ sender: UISlider) {
         setColor()
         
         switch sender {
-        case redSlider: setValue(for: redLabel)
-        case greenSlider: setValue(for: greenLabel)
-        default: setValue(for: blueLabel)
+        case redSlider: setValueLabel(for: redLabel)
+        case greenSlider: setValueLabel(for: greenLabel)
+        default: setValueLabel(for: blueLabel)
+        }
+        
+        switch sender {
+        case redSlider: setValueTF(for: redTextField)
+        case greenSlider: setValueTF(for: greenTextField)
+        default: setValueTF(for: blueTextField)
         }
     }
     
@@ -74,6 +80,7 @@ class RGBMixingViewController: UIViewController {
     
     
     
+    
     //MARK: - Private Methods
     private func setColor() {
         colorView.backgroundColor = UIColor(
@@ -84,7 +91,7 @@ class RGBMixingViewController: UIViewController {
         )
     }
     
-    private func setValue(for labels: UILabel...) {
+    private func setValueLabel(for labels: UILabel...) {
         labels.forEach { label in
             switch label {
             case redLabel:
@@ -97,22 +104,35 @@ class RGBMixingViewController: UIViewController {
         }
     }
     
+    private func setValueTF( for textFields: UITextField...) {
+        textFields.forEach { textField in
+            switch textField {
+            case redTextField:
+                textField.text = string(from: redSlider)
+            case greenTextField:
+                textField.text = string(from: greenSlider)
+            default:
+                textField.text = string(from: blueSlider)
+            }
+        }
+    }
+    
     private func string(from slider: UISlider) -> String {
         String(format: "%.2f", slider.value)
     }
 }
 
-
 extension RGBMixingViewController: UITextFieldDelegate {
-     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-         if textField == redTextField {
-             greenTextField.becomeFirstResponder()
-         } else if textField == greenTextField {
-             blueTextField.becomeFirstResponder()
-         }
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if textField == redTextField {
+            greenTextField.becomeFirstResponder()
+        } else if textField == greenTextField {
+            blueTextField.becomeFirstResponder()
+        }
         return true
     }
 }
+
 
 
 
