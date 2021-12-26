@@ -21,6 +21,8 @@ class ColorViewController: UIViewController, ColorViewControllerDelegate {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let destination = segue.destination as? RGBMixingViewController else { return }
         destination.delegate = self
+        destination.color = view.backgroundColor
+        
     }
     
     func color(color: UIColor) {

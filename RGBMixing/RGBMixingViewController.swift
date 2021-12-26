@@ -8,10 +8,12 @@
 import UIKit
 
 
-class RGBMixingViewController: UIViewController {
+
+class RGBMixingViewController: UIViewController, UITextFieldDelegate {
     
-    //MARK: - private properties
+    //MARK: - properties
     weak var delegate: ColorViewController?
+    var color: UIColor?
     
     //MARK: - IBOutlets
     @IBOutlet weak var colorView: UIView!
@@ -29,13 +31,16 @@ class RGBMixingViewController: UIViewController {
     @IBOutlet weak var blueTextField: UITextField!
     
     override func viewDidLoad() {
+        
         super.viewDidLoad()
+        colorView.backgroundColor = color
         colorView.layer.cornerRadius = 15
+        
         redSlider.minimumTrackTintColor = .red
         greenSlider.minimumTrackTintColor = .green
         blueSlider.minimumTrackTintColor = .blue
         
-        setColor()
+        colorSeparator()
         setValueLabel(for: redLabel, greenLabel, blueLabel)
         setValueTF(for: redTextField, greenTextField, blueTextField)
         
@@ -43,8 +48,6 @@ class RGBMixingViewController: UIViewController {
         greenTextField.delegate = self
         blueTextField.delegate = self
     }
-    
-    
     
     //MARK: - IBAction
     @IBAction func rgbSlider(_ sender: UISlider) {
@@ -78,8 +81,16 @@ class RGBMixingViewController: UIViewController {
         )
     }
     
-    
-    
+    @objc func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if textField == redTextField {
+            greenTextField.becomeFirstResponder()
+        } else if textField == greenTextField {
+            blueTextField.becomeFirstResponder()
+        } else if textField == blueTextField {
+            blueTextField.resignFirstResponder()
+        }
+        return true
+    }
     
     //MARK: - Private Methods
     private func setColor() {
@@ -89,6 +100,13 @@ class RGBMixingViewController: UIViewController {
             blue: CGFloat(blueSlider.value),
             alpha: 1
         )
+    }
+    
+    private func colorSeparator() {
+        let startColor = CIColor(color: color ?? .white)
+        redSlider.value = Float(startColor.red)
+        greenSlider.value = Float(startColor.green)
+        blueSlider.value = Float(startColor.blue)
     }
     
     private func setValueLabel(for labels: UILabel...) {
@@ -121,18 +139,3 @@ class RGBMixingViewController: UIViewController {
         String(format: "%.2f", slider.value)
     }
 }
-
-extension RGBMixingViewController: UITextFieldDelegate {
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        if textField == redTextField {
-            greenTextField.becomeFirstResponder()
-        } else if textField == greenTextField {
-            blueTextField.becomeFirstResponder()
-        }
-        return true
-    }
-}
-
-
-
-
