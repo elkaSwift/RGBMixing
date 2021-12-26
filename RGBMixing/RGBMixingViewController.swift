@@ -7,12 +7,11 @@
 
 import UIKit
 
-
-
-class RGBMixingViewController: UIViewController, UITextFieldDelegate {
+class RGBMixingViewController: UIViewController {
     
     //MARK: - properties
     weak var delegate: ColorViewController?
+    var delegate2: RGBMixingViewController?
     var color: UIColor?
     
     //MARK: - IBOutlets
@@ -44,9 +43,6 @@ class RGBMixingViewController: UIViewController, UITextFieldDelegate {
         setValueLabel(for: redLabel, greenLabel, blueLabel)
         setValueTF(for: redTextField, greenTextField, blueTextField)
         
-        redTextField.delegate = self
-        greenTextField.delegate = self
-        blueTextField.delegate = self
     }
     
     //MARK: - IBAction
@@ -79,17 +75,6 @@ class RGBMixingViewController: UIViewController, UITextFieldDelegate {
             blue: CGFloat(blueSlider.value)
             , alpha: 1)
         )
-    }
-    
-    @objc func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        if textField == redTextField {
-            greenTextField.becomeFirstResponder()
-        } else if textField == greenTextField {
-            blueTextField.becomeFirstResponder()
-        } else if textField == blueTextField {
-            blueTextField.resignFirstResponder()
-        }
-        return true
     }
     
     //MARK: - Private Methods
@@ -139,3 +124,12 @@ class RGBMixingViewController: UIViewController, UITextFieldDelegate {
         String(format: "%.2f", slider.value)
     }
 }
+
+//MARK: - Alert Controller
+extension RGBMixingViewController: UITextFieldDelegate {
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesBegan(touches, with: event)
+        view.endEditing(true)
+    }
+}
+
